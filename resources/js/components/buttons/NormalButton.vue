@@ -24,31 +24,38 @@
         ]"
         @click="commands[buttonKey]"
     >
-        <font-awesome-icon v-if="buttonKey == 'bullet_list'" :icon="['far', 'list-ul']">
-        </font-awesome-icon>
+        <format-list-bulleted-icon v-if="buttonKey == 'bullet_list'" title="Ненумерованный список"></format-list-bulleted-icon>
 
-        <font-awesome-icon v-if="buttonKey == 'ordered_list'" :icon="['far', 'list-ol']">
-        </font-awesome-icon>
+        <format-list-numbered-icon v-if="buttonKey == 'ordered_list'" title="Нумерованный список">
+        </format-list-numbered-icon>
 
-        <font-awesome-icon v-if="buttonKey == 'blockquote'" :icon="['far', 'quote-right']">
-        </font-awesome-icon>
+        <format-quote-close-icon v-if="buttonKey == 'blockquote'" title="Цитата">
+        </format-quote-close-icon>
     </button>
 </template>
 
 <script>
-import { library } from '@fortawesome/fontawesome-svg-core'
+import MenuIcon from "vue-material-design-icons/Menu.vue"
+import AndroidIcon from "vue-material-design-icons/Android";
+import FormatListBulletedIcon from "vue-material-design-icons/FormatListBulleted";
+import FormatListNumberedIcon from "vue-material-design-icons/FormatListNumbered";
+import FormatQuoteCloseIcon from "vue-material-design-icons/FormatQuoteClose";
+import FormatBoldIcon from "vue-material-design-icons/FormatBold";
+import VisualStudioCodeIcon from "vue-material-design-icons/VisualStudioCode";
 
-import { faCode, faListUl, faListOl, faQuoteRight } from '@fortawesome/pro-regular-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-library.add(faCode, faListUl, faListOl, faQuoteRight)
 
 
 export default {
     props: ['buttonKey', 'isActive', 'commands'],
 
     components: {
-        FontAwesomeIcon,
+        VisualStudioCodeIcon,
+        FormatBoldIcon,
+        FormatQuoteCloseIcon,
+        FormatListNumberedIcon,
+        FormatListBulletedIcon,
+        AndroidIcon,
+        MenuIcon,
     },
 }
 </script>

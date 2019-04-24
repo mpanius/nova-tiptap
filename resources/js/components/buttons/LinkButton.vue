@@ -30,8 +30,7 @@
                 @click="setLinkUrl(commands.link, null)"
                 type="button"
             >
-                <font-awesome-icon :icon="['far', 'times-circle']">
-                </font-awesome-icon>
+             <close-icon></close-icon>
             </button>
         </form>
 
@@ -52,8 +51,7 @@
             ]"
             @click="showLinkMenu(getMarkAttrs('link'))"
         >
-            <font-awesome-icon :icon="['far', 'link']">
-            </font-awesome-icon>
+            <link-icon></link-icon>
         </button>
 
         <button
@@ -73,19 +71,18 @@
             ]"
             @click="setLinkUrl(commands.link, null)"
         >
-            <font-awesome-icon :icon="['far', 'unlink']">
-            </font-awesome-icon>
+            <link-off-icon></link-off-icon>
         </button>
     </span>
 </template>
 
 <script>
-import { library } from '@fortawesome/fontawesome-svg-core'
+    import MenuIcon from "vue-material-design-icons/Menu.vue"
+    import LinkOffIcon from "vue-material-design-icons/LinkOff";
+    import LinkBoxIcon from "vue-material-design-icons/LinkBox";
+    import CloseIcon from "vue-material-design-icons/Close";
+    import LinkIcon from "vue-material-design-icons/Link";
 
-import { faLink, faUnlink, faTimesCircle } from '@fortawesome/pro-regular-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-library.add(faLink, faUnlink, faTimesCircle)
 
 export default {
     props: [
@@ -100,7 +97,11 @@ export default {
     ],
 
     components: {
-        FontAwesomeIcon,
+        LinkIcon,
+        CloseIcon,
+        LinkOffIcon,
+        LinkBoxIcon,
+        MenuIcon,
     },
 }
 </script>
