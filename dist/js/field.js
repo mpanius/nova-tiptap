@@ -20042,92 +20042,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -48849,197 +48763,62 @@ var render = function() {
                 fn: function(ref) {
                   var commands = ref.commands
                   var isActive = ref.isActive
-                  return _c("div", { staticClass: "menubar" }, [
-                    _c("div", { staticClass: "toolbar" }, [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "menubar__button",
-                          on: { click: commands.undo }
-                        },
-                        [_c("icon", { attrs: { name: "undo" } })],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "menubar__button",
-                          on: { click: commands.redo }
-                        },
-                        [_c("icon", { attrs: { name: "redo" } })],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "menubar__button",
-                          class: { "is-active": isActive.bold() },
-                          on: { click: commands.bold }
-                        },
-                        [_c("icon", { attrs: { name: "bold" } })],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "menubar__button",
-                          class: { "is-active": isActive.italic() },
-                          on: { click: commands.italic }
-                        },
-                        [_c("icon", { attrs: { name: "italic" } })],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "menubar__button",
-                          class: { "is-active": isActive.strike() },
-                          on: { click: commands.strike }
-                        },
-                        [_c("icon", { attrs: { name: "strike" } })],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "menubar__button",
-                          class: { "is-active": isActive.underline() },
-                          on: { click: commands.underline }
-                        },
-                        [_c("icon", { attrs: { name: "underline" } })],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "menubar__button",
-                          class: { "is-active": isActive.code() },
-                          on: { click: commands.code }
-                        },
-                        [_c("icon", { attrs: { name: "code" } })],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "menubar__button",
-                          class: { "is-active": isActive.paragraph() },
-                          on: { click: commands.paragraph }
-                        },
-                        [_c("icon", { attrs: { name: "paragraph" } })],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "menubar__button",
-                          class: {
-                            "is-active": isActive.heading({ level: 1 })
-                          },
-                          on: {
-                            click: function($event) {
-                              return commands.heading({ level: 1 })
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            H1\n                        "
-                          )
+                  var getMarkAttrs = ref.getMarkAttrs
+                  return _c(
+                    "div",
+                    { staticClass: "menubar" },
+                    [
+                      _vm._l(_vm.buttons, function(buttonKey, params) {
+                        return [
+                          buttonKey == "heading" || params == "heading"
+                            ? [
+                                _c("heading-buttons", {
+                                  attrs: {
+                                    headingLevels: _vm.headingLevels,
+                                    commands: commands,
+                                    isActive: isActive
+                                  }
+                                })
+                              ]
+                            : _vm._e(),
+                          _vm._v(" "),
+                          buttonKey != "heading" &&
+                          buttonKey != "link" &&
+                          params != "heading"
+                            ? [
+                                _c("normal-button", {
+                                  attrs: {
+                                    buttonKey: buttonKey,
+                                    commands: commands,
+                                    isActive: isActive
+                                  }
+                                })
+                              ]
+                            : _vm._e(),
+                          _vm._v(" "),
+                          buttonKey == "link"
+                            ? _c(
+                                "span",
+                                { staticClass: "tiptap-button-container" },
+                                [
+                                  _c("link-button", {
+                                    attrs: {
+                                      commands: commands,
+                                      isActive: isActive,
+                                      linkMenuIsActive: _vm.linkMenuIsActive,
+                                      linkUrl: _vm.linkUrl,
+                                      hideLinkMenu: _vm.hideLinkMenu,
+                                      showLinkMenu: _vm.showLinkMenu,
+                                      getMarkAttrs: getMarkAttrs,
+                                      setLinkUrl: _vm.setLinkUrl
+                                    }
+                                  })
+                                ],
+                                1
+                              )
+                            : _vm._e()
                         ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "menubar__button",
-                          class: {
-                            "is-active": isActive.heading({ level: 2 })
-                          },
-                          on: {
-                            click: function($event) {
-                              return commands.heading({ level: 2 })
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            H2\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "menubar__button",
-                          class: {
-                            "is-active": isActive.heading({ level: 3 })
-                          },
-                          on: {
-                            click: function($event) {
-                              return commands.heading({ level: 3 })
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            H3\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "menubar__button",
-                          class: { "is-active": isActive.bullet_list() },
-                          on: { click: commands.bullet_list }
-                        },
-                        [_c("icon", { attrs: { name: "ul" } })],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "menubar__button",
-                          class: { "is-active": isActive.ordered_list() },
-                          on: { click: commands.ordered_list }
-                        },
-                        [_c("icon", { attrs: { name: "ol" } })],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "menubar__button",
-                          class: { "is-active": isActive.blockquote() },
-                          on: { click: commands.blockquote }
-                        },
-                        [_c("icon", { attrs: { name: "quote" } })],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "menubar__button",
-                          class: { "is-active": isActive.code_block() },
-                          on: { click: commands.code_block }
-                        },
-                        [_c("icon", { attrs: { name: "code" } })],
-                        1
-                      ),
+                      }),
                       _vm._v(" "),
                       _c(
                         "button",
@@ -49156,8 +48935,9 @@ var render = function() {
                             )
                           ])
                         : _vm._e()
-                    ])
-                  ])
+                    ],
+                    2
+                  )
                 }
               }
             ])

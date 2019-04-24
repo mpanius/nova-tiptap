@@ -3,134 +3,49 @@
         <template slot="field">
 
             <editor-menu-bar :editor="editor">
-                <div class="menubar" slot-scope="{ commands, isActive }">
-                    <div class="toolbar">
-                        <button
-                                class="menubar__button"
-                                @click="commands.undo"
-                        >
-                            <icon name="undo" />
-                        </button>
+                <div class="menubar" slot-scope="{ commands, isActive, getMarkAttrs }">
+                    <template v-for="(buttonKey, params) in buttons">
+                        <template v-if="buttonKey == 'heading' || params == 'heading'">
+                            <heading-buttons
+                                :headingLevels="headingLevels"
+                                :commands="commands"
+                                :isActive="isActive"
+                            >
+                            </heading-buttons>
+                        </template>
 
-                        <button
-                                class="menubar__button"
-                                @click="commands.redo"
-                        >
-                            <icon name="redo" />
-                        </button>
+                        <template v-if="buttonKey != 'heading' && buttonKey != 'link' && params != 'heading'">
+                            <normal-button
+                                :buttonKey="buttonKey"
+                                :commands="commands"
+                                :isActive="isActive"
+                            >
+                            </normal-button>
+                        </template>
 
-                        <button
-                                class="menubar__button"
-                                :class="{ 'is-active': isActive.bold() }"
-                                @click="commands.bold"
-                        >
-                            <icon name="bold" />
-                        </button>
+                        <span class="tiptap-button-container" v-if="buttonKey == 'link'">
+                            <link-button
+                                :commands="commands"
+                                :isActive="isActive"
+                                :linkMenuIsActive="linkMenuIsActive"
+                                :linkUrl="linkUrl"
+                                :hideLinkMenu="hideLinkMenu"
+                                :showLinkMenu="showLinkMenu"
+                                :getMarkAttrs="getMarkAttrs"
+                                :setLinkUrl="setLinkUrl"
+                            >
+                            </link-button>
+                        </span>
 
-                        <button
-                                class="menubar__button"
-                                :class="{ 'is-active': isActive.italic() }"
-                                @click="commands.italic"
-                        >
-                            <icon name="italic" />
-                        </button>
+                    </template>
+                    <button
+                            class="menubar__button"
+                            @click="commands.createTable({rowsCount: 3, colsCount: 3, withHeaderRow: false })"
+                    >
+                        <icon name="table" />
+                    </button>
 
-                        <button
-                                class="menubar__button"
-                                :class="{ 'is-active': isActive.strike() }"
-                                @click="commands.strike"
-                        >
-                            <icon name="strike" />
-                        </button>
-
-                        <button
-                                class="menubar__button"
-                                :class="{ 'is-active': isActive.underline() }"
-                                @click="commands.underline"
-                        >
-                            <icon name="underline" />
-                        </button>
-
-                        <button
-                                class="menubar__button"
-                                :class="{ 'is-active': isActive.code() }"
-                                @click="commands.code"
-                        >
-                            <icon name="code" />
-                        </button>
-
-                        <button
-                                class="menubar__button"
-                                :class="{ 'is-active': isActive.paragraph() }"
-                                @click="commands.paragraph"
-                        >
-                            <icon name="paragraph" />
-                        </button>
-
-                        <button
-                                class="menubar__button"
-                                :class="{ 'is-active': isActive.heading({ level: 1 }) }"
-                                @click="commands.heading({ level: 1 })"
-                        >
-                            H1
-                        </button>
-
-                        <button
-                                class="menubar__button"
-                                :class="{ 'is-active': isActive.heading({ level: 2 }) }"
-                                @click="commands.heading({ level: 2 })"
-                        >
-                            H2
-                        </button>
-
-                        <button
-                                class="menubar__button"
-                                :class="{ 'is-active': isActive.heading({ level: 3 }) }"
-                                @click="commands.heading({ level: 3 })"
-                        >
-                            H3
-                        </button>
-
-                        <button
-                                class="menubar__button"
-                                :class="{ 'is-active': isActive.bullet_list() }"
-                                @click="commands.bullet_list"
-                        >
-                            <icon name="ul" />
-                        </button>
-
-                        <button
-                                class="menubar__button"
-                                :class="{ 'is-active': isActive.ordered_list() }"
-                                @click="commands.ordered_list"
-                        >
-                            <icon name="ol" />
-                        </button>
-
-                        <button
-                                class="menubar__button"
-                                :class="{ 'is-active': isActive.blockquote() }"
-                                @click="commands.blockquote"
-                        >
-                            <icon name="quote" />
-                        </button>
-
-                        <button
-                                class="menubar__button"
-                                :class="{ 'is-active': isActive.code_block() }"
-                                @click="commands.code_block"
-                        >
-                            <icon name="code" />
-                        </button>
-
-                        <button
-                                class="menubar__button"
-                                @click="commands.createTable({rowsCount: 3, colsCount: 3, withHeaderRow: false })"
-                        >
-                            <icon name="table" />
-                        </button>
-
-                        <span v-if="isActive.table()">
+                    <span v-if="isActive.table()">
 						<button
                                 class="menubar__button"
                                 @click="commands.deleteTable"
@@ -179,8 +94,7 @@
                         >
 							<icon name="combine_cells" />
 						</button>
-					</span>
-                    </div>
+                    </span>
                 </div>
             </editor-menu-bar>
 
