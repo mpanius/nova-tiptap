@@ -28,7 +28,7 @@ use Manogi\Tiptap\Tiptap;
 ## Usage with your selection of buttons:
 
 ```
-Tiptap::make('FieldName')
+Tiptap::make('Cv')
   ->buttons([
       'heading',
       'italic',
